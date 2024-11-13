@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: confluent-kafka-consumer
+  kafka:
+    bootstrap-servers: pkc-7xoy1.eu-central-1.aws.confluent.cloud:9092
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="VSDOT4DNW2CGCUMI" password="/tBOUZ/0Dn6LxoI4hKWI40A8Vi4TiMkFuKSTSCZoC+h5RFlKPdlLPMDzw39am4sG";
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        schema.registry.url: https://psrc-yoz1k.eu-central-1.aws.confluent.cloud
+        specific.avro.reader: true
+        basic.auth.credentials.source: USER_INFO
+        basic.auth.user.info: "ISK3TR5MPKG7SNZH:8MDyEb+qRj7xS6kMIRCOq/hsoNnf2KMmBnYqBejS/muQqVd/6I5vuSpFgkNzvMBq"
+      group-id: orders_consumer_group

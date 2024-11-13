@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "name": "AccountLedgerEvent",
+  "namespace": "com.vinc.confluentkafkaconsumer.avro",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Unique identifier for the event"
+    },
+    {
+      "name": "transaction_type",
+      "type": {
+        "type": "enum",
+        "name": "TransactionType",
+        "symbols": ["WITHDRAWAL", "DEPOSIT", "TRANSFER"]
+      },
+      "doc": "Type of the transaction"
+    },
+    {
+      "name": "source_account_id",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Account ID initiating the transaction, or null if not applicable"
+    },
+    {
+      "name": "destination_account_id",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Account ID receiving the transaction, or null if not applicable"
+    },
+    {
+      "name": "amount",
+      "type": "double",
+      "doc": "Amount involved in the transaction"
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "doc": "Currency of the transaction amount, e.g., USD, EUR"
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      },
+      "doc": "Timestamp of when the transaction occurred"
+    },
+    {
+      "name": "status",
+      "type": {
+        "type": "enum",
+        "name": "TransactionStatus",
+        "symbols": ["PENDING", "COMPLETED", "FAILED"]
+      },
+      "doc": "Status of the transaction"
+    }
+  ]
+}
