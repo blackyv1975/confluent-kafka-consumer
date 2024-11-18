@@ -9,5 +9,4 @@ public class ConfluentKafkaConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConfluentKafkaConsumerApplication.class, args);
     }
-
 }
